@@ -7,5 +7,9 @@
         "--no-pretty",
         "--check-untyped-defs",
         "--install-types"
-    ]
+    ],
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "isort.check": true
 }
