@@ -1,6 +1,6 @@
 """今日の曜日を当てる"""
 # 標準ライブラリ
-from datetime import datetime
+import datetime
 
 # 外部ライブラリ
 # https://qiita.com/skokado/items/50861b95b236068fd7b9
@@ -9,8 +9,9 @@ import questionary
 
 days = ['月', '火', '水', '木', '金', '土', '日']
 
-today = datetime.now().weekday()
-day = days[today]
+# yyyy-mm-dd
+today = datetime.date.today()
+day = days[today.weekday()]
 
 ans_day = questionary.select(
     '今日は何曜日？',
