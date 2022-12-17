@@ -1,0 +1,3 @@
+他のファイルからインポートされたとき実行しない
+  https://blog.pyq.jp/entry/Python_kaiketsu_180207
+  if __name__ == "__main__":
