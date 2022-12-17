@@ -51,5 +51,6 @@ class RockScissorsPaper():
 
 
 # メイン処理
-obj = RockScissorsPaper()
-obj.do()
+if __name__ == "__main__":
+    obj = RockScissorsPaper()
+    obj.do()
