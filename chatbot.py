@@ -25,16 +25,14 @@ class command:
             use_jk_keys=False,
             instruction="（数字キーまたは矢印キーを使用）"
         ).ask(kbi_msg="キャンセルされました。")
-        self.do(ans)
+        if ans is not None:
+            self.do(ans)
 
     @staticmethod
     def do(num: int) -> None:
-        match num:
-            case 1:
-                obj = today()
-                obj.do()
-            case _:
-                print("この番号は存在しません。")
+        command_list = ["", "today"]
+        obj = eval(command_list[num])()
+        obj.do()
 
 
 class today():
@@ -46,7 +44,7 @@ class today():
     today = datetime.date.today()
     day = days[today.weekday()]
 
-    def do(self):
+    def do(self) -> None:
         ans_day = questionary.select(
             '今日は何曜日？',
             choices=self.days,
@@ -56,7 +54,7 @@ class today():
         ).ask(kbi_msg="キャンセルされました。")
 
         # キャンセルの場合、「None」が返ってくる
-        if not(ans_day == None):
+        if ans_day is not None:
             if(ans_day == self.day):
                 print("正解")
             else:
@@ -64,10 +62,23 @@ class today():
                 print(f"正解は、「{self.day}」でした。")
 
 
+def bool():
+    is_bool = questionary.confirm(
+        "続けますか？",
+        default=True,
+    ).ask(kbi_msg="キャンセルされました。")
+    return is_bool
+
+
+# メイン処理
 print('---チャットボットをスタートします---')
-print()
-c = command()
-c.select()
-# command.select()
-print()
+
+while True:
+    print()
+    c = command()
+    c.select()
+    is_bool = bool()
+    print()
+    if any([is_bool is False, is_bool is None]):
+        break
 print('---チャットボットが終了しました---')
