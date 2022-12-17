@@ -1,3 +1,8 @@
+Pythonで対話式CLIツールを作る
+  https://qiita.com/skokado/items/50861b95b236068fd7b9#yesno-%E7%9C%9F%E5%81%BD%E5%80%A4
+  import questionary
+
+
 他のファイルからインポートされたとき実行しない
   https://blog.pyq.jp/entry/Python_kaiketsu_180207
   if __name__ == "__main__":
