@@ -6,8 +6,11 @@
         "--show-column-numbers",
         "--no-pretty",
         "--check-untyped-defs",
-        "--install-types"
+        "--install-types",
+        "--warn-return-any",
+        "--config-file=${workspaceFolder}/mypy.ini"
     ],
+    "mypy.configFile": "mypy.ini",
     "editor.codeActionsOnSave": {
         "source.organizeImports": true
     },

@@ -1,16 +1,21 @@
-"""今日の曜日を当てる"""
 # 標準ライブラリ
 import datetime
+from time import sleep
 
 # 外部ライブラリ
 # https://qiita.com/skokado/items/50861b95b236068fd7b9
 # https://questionary.readthedocs.io/en/stable/index.html
 import questionary
 
+# 別ファイル
+from speak import speak
+
 
 class today():
+    """今日の曜日を当てる"""
+
     def __init__(self) -> None:
-        print("曜日当てゲームをします。")
+        speak.bot("曜日当てゲームをします。")
 
     days = ['月', '火', '水', '木', '金', '土', '日']
     # yyyy-mm-dd
@@ -29,10 +34,12 @@ class today():
         # キャンセルの場合、「None」が返ってくる
         if ans_day is not None:
             if(ans_day == self.day):
-                print("正解")
+                speak.bot("正解")
             else:
-                print("不正解")
-                print(f"正解は、「{self.day}」でした。")
+                speak.bot("不正解")
+                sleep(1)
+                speak.bot(f"正解は、「{self.day}」でした。")
+
 
 # メイン処理
 if __name__ == "__main__":

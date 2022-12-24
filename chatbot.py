@@ -4,14 +4,15 @@
 python3.10で作成
 """
 # 標準ライブラリ
-import datetime
-import random
+from typing import Any
+from time import sleep
 
 # 外部ライブラリ
 # https://qiita.com/skokado/items/50861b95b236068fd7b9
 # https://questionary.readthedocs.io/en/stable/index.html
 import questionary
 
+# 別ファイル
 from RockScissorsPaper import RockScissorsPaper
 from today import today
 
@@ -25,25 +26,34 @@ class command:
                 questionary.Choice(title="曜日当てゲーム", value=1),
                 questionary.Choice(title="じゃんけんゲーム", value=2),
             ],
+            # 数字キーまたは矢印キーで選択できるようにする。
             use_shortcuts=True,
+            # JKキーで選択できないようにする。
             use_jk_keys=False,
             instruction="（数字キーまたは矢印キーを使用）"
         ).ask(kbi_msg="キャンセルされました。")
         if ans is not None:
             self.do(ans)
 
-    @staticmethod
-    def do(num: int) -> None:
-        command_list = ["", "today", "RockScissorsPaper"]
-        obj = eval(command_list[num])()
-        obj.do()
+    def do(self, num: int) -> None:
+        obj: Any
+        match num:
+            case 0:
+                pass
+            case 1:
+                obj = today()
+                obj.do()
+            case 2:
+                obj = RockScissorsPaper()
+                obj.do()
 
 
-def bool():
+def bool() -> Any:
     is_bool = questionary.confirm(
         "続けますか？",
         default=True,
     ).ask(kbi_msg="キャンセルされました。")
+    # boolかNoneが返る！
     return is_bool
 
 
@@ -54,6 +64,7 @@ while True:
     print()
     c = command()
     c.select()
+    sleep(1)
     is_bool = bool()
     print()
     if any([is_bool is False, is_bool is None]):
