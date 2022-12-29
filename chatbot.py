@@ -1,3 +1,4 @@
+# 更新日：2022/12/29
 """
 チャットボット
 第3回効果測定のやつを作り直す
@@ -15,6 +16,7 @@ import questionary
 # 別ファイル
 from RockScissorsPaper import RockScissorsPaper
 from today import today
+from zipcode import zipcode
 
 
 class command:
@@ -25,6 +27,7 @@ class command:
             choices=[
                 questionary.Choice(title="曜日当てゲーム", value=1),
                 questionary.Choice(title="じゃんけんゲーム", value=2),
+                questionary.Choice(title="郵便番号から住所検索", value=3),
             ],
             # 数字キーまたは矢印キーで選択できるようにする。
             use_shortcuts=True,
@@ -46,6 +49,11 @@ class command:
             case 2:
                 obj = RockScissorsPaper()
                 obj.do()
+            case 3:
+                obj = zipcode()
+                obj.do()
+            case _:
+                print("このコマンドは存在しません。")
 
 
 def bool() -> Any:
