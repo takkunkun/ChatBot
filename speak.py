@@ -1,6 +1,11 @@
-"""話すクラス"""
+# 更新日：2022/12/29
 # 標準ライブラリ
 import unicodedata
+
+# 外部ライブラリ
+from colorama import Back, Fore, Style, init
+
+init(autoreset=True)
 
 # 初期値
 BotName = 'python'  # ボットの名前
@@ -46,17 +51,48 @@ class speak:
 
     @staticmethod
     def bot(speak: str) -> None:
+        """ボットが話す1行目関数"""
         print('{} > {}'.format(BotName, speak))
 
     @staticmethod
+    def bot2(speak: str) -> None:
+        """ボットが話す2行目以降関数"""
+        print("%{}s  %s".format(len_BotName + 1) %
+              ("", speak))
+
+    @staticmethod
+    def bot_error(speak: str) -> None:
+        """ボットが話す1行目関数(文字色赤)"""
+        print('{} > '.format(BotName) + Style.BRIGHT +
+              Fore.RED + '{}'.format(speak))
+
+    @staticmethod
+    def bot2_error(speak: str) -> None:
+        """ボットが話す2行目以降関数(文字色赤)"""
+        print(Style.BRIGHT +
+              Fore.RED + '%{}s  %s'.format(len_BotName + 1) %
+              ('', speak))
+
+    @ staticmethod
     def user(speak: str) -> None:
-        print('{} > {}'.format(UserName, speak))
+        """ユーザーが話す1行目関数"""
+        print("{} > {}".format(UserName, speak))
+
+    @ staticmethod
+    def user2(speak: str) -> None:
+        """ユーザーが話す2行目以降関数"""
+        print("%{}s  %s".format(len_UserName + 1) %
+              ("", speak))
 
 
 # メイン処理
 if __name__ == "__main__":
+    print("-----表示テスト-----")
     obj = speak()
     obj.bot("ボットです。")
+    obj.bot2("よろしく！")
+    obj.bot_error("ボットエラー")
+    obj.bot2_error("ボットエラー2")
     obj.user("ユーザーです。")
-
-    speak.bot("あ")
+    obj.user2("よろしく！")
+    print("-----表示テスト-----")
