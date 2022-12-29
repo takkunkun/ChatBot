@@ -33,8 +33,8 @@ class zipcode():
                         print("住所：{}{}{}".format(result["address1"],
                                                  result["address2"], result["address3"]))
                 elif data['results'] is None:
-                    speak.bot("該当する住所がありません。")
-                    speak.bot2("郵便番号を確認してください。")
+                    speak.bot_error("該当する住所がありません。")
+                    speak.bot2_error("郵便番号を確認してください。")
             elif data['status'] == 400:
                 # 入力パラメータエラーだった場合。
                 error_list = {
@@ -44,13 +44,13 @@ class zipcode():
                 }
                 message = data['message']
                 if message in error_list:
-                    speak.bot(error_list[message])
+                    speak.bot_error(error_list[message])
         except Exception as e:
             print(e.__class__.__name__)
             import traceback
             print(traceback.format_exc())
         except requests.exceptions.ConnectionError:
-            print("取得できませんでした。")
+            speak.bot_error("取得できませんでした。")
 
 
 # メイン処理
