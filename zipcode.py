@@ -1,8 +1,9 @@
+# 更新日：2022/12/29
+# 作成日：2022/12/29
+
 # 外部ライブラリ
-# https://qiita.com/skokado/items/50861b95b236068fd7b9
-# https://questionary.readthedocs.io/en/stable/index.html
-# import questionary
 import requests
+
 # 別ファイル
 from speak import speak
 
@@ -45,12 +46,13 @@ class zipcode():
                 message = data['message']
                 if message in error_list:
                     speak.bot_error(error_list[message])
+        except requests.exceptions.ConnectionError:
+            speak.bot_error("取得できませんでした。")
+            speak.bot2_error("インターネット接続などを確認してください。")
         except Exception as e:
             print(e.__class__.__name__)
             import traceback
             print(traceback.format_exc())
-        except requests.exceptions.ConnectionError:
-            speak.bot_error("取得できませんでした。")
 
 
 # メイン処理
