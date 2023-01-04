@@ -7,16 +7,19 @@ from time import sleep
 # https://questionary.readthedocs.io/en/stable/index.html
 import questionary
 
+# 別ファイル
+from speak import speak
+
 
 class RockScissorsPaper():
     """じゃんけんクラス"""
     hands = ("グー", "チョキ", "パー")
     decision = ("引き分け", "負け", "勝ち")
 
-    def __init__(self):
-        print("じゃんけんゲームを始めます。")
+    def __init__(self) -> None:
+        speak.bot("じゃんけんゲームを始めます。")
 
-    def do(self):
+    def do(self) -> None:
         """じゃんけん本体"""
         # ユーザーにどの手を出すか選択させる。
         user_hond = questionary.select(
@@ -44,10 +47,12 @@ class RockScissorsPaper():
             sleep(1)
             print("ポン", flush=True)
             sleep(0.5)
-            print(self.hands[user_hond])
-            print(self.hands[bot_hand])
-            print("あなたは{}です。".format(self.decision[judge]))
-        print("じゃんけんゲームを終わります。")
+            speak.user(self.hands[user_hond])
+            speak.bot(self.hands[bot_hand])
+            sleep(1)
+            speak.bot("あなたは{}です。".format(self.decision[judge]))
+            sleep(1)
+        speak.bot("じゃんけんゲームを終わります。")
 
 
 # メイン処理
