@@ -1,0 +1,18 @@
+{
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyArgs": [
+        "--follow-imports=silent",
+        "--ignore-missing-imports",
+        "--show-column-numbers",
+        "--no-pretty",
+        "--check-untyped-defs",
+        "--install-types",
+        "--warn-return-any",
+        "--config-file=${workspaceFolder}/mypy.ini"
+    ],
+    "mypy.configFile": "mypy.ini",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "isort.check": true
+}

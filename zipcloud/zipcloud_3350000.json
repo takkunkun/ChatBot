@@ -1,0 +1,26 @@
+{
+	"message": null,
+	"results": [
+		{
+			"address1": "埼玉県",
+			"address2": "蕨市",
+			"address3": "",
+			"kana1": "ｻｲﾀﾏｹﾝ",
+			"kana2": "ﾜﾗﾋﾞｼ",
+			"kana3": "",
+			"prefcode": "11",
+			"zipcode": "3350000"
+		},
+		{
+			"address1": "埼玉県",
+			"address2": "戸田市",
+			"address3": "",
+			"kana1": "ｻｲﾀﾏｹﾝ",
+			"kana2": "ﾄﾀﾞｼ",
+			"kana3": "",
+			"prefcode": "11",
+			"zipcode": "3350000"
+		}
+	],
+	"status": 200
+}
