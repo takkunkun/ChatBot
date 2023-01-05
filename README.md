@@ -10,7 +10,7 @@
   - [pipの場合](#pipの場合)
   - [Anacondaの場合](#anacondaの場合)
 - [Usage](#usage)
-  - [Note](#note)
+- [Note](#note)
 - [How to make exe](#how-to-make-exe)
   - [pipの場合](#pipの場合-1)
   - [Anacondaの場合](#anacondaの場合-1)
@@ -61,7 +61,7 @@ conda install requests
 python chatbot.py
 ```
 
-## Note
+# Note
 自己紹介を実行した場合、「username.txt」にユーザー名が保存される。
 
 # How to make exe
