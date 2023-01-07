@@ -1,11 +1,16 @@
-# 更新日：2023/01/06
+# 更新日：2023/01/07
 # 作成日：2023/01/06
 
 # 標準ライブラリ
 import random
+from typing import Any
 
 # 外部ライブラリ
 from colorama import Back, Fore, Style, init
+# https://qiita.com/skokado/items/50861b95b236068fd7b9
+# https://questionary.readthedocs.io/en/stable/index.html
+import questionary
+from questionary import Validator, ValidationError
 
 # 別ファイル
 import speak as s
@@ -15,6 +20,26 @@ from speak import speak
 init(autoreset=True)
 
 UserName = s.UserName
+
+
+class NumValidator(Validator):
+    def validate(self, document: Any) -> None:
+        text = document.text
+        if len(text) == 0:
+            raise ValidationError(
+                message="値を入力してください。",
+                cursor_position=len(text),
+            )
+        try:
+            text = int(text)
+        except ValueError:
+            raise ValidationError(
+                message="数値以外が入力されています。",
+            )
+        if (text < min) or (max < text):
+            raise ValidationError(
+                message=f"{min}以上{max}以下で入力してください。",
+            )
 
 
 class countingGames():
@@ -31,25 +56,26 @@ class countingGames():
         speak.bot(f"{min}から{max}の数字を当ててください。")
 
         while True:
-            ans: int
-            try:
-                ans = int(speak.user_input(""))
-            except ValueError:
-                speak.bot_error("数字以外の文字が含まれています。")
-                speak.bot2("もう一度入力してください。")
-            else:
-                count += 1
-                if ans == num:
-                    speak.bot(Fore.LIGHTMAGENTA_EX + "正解です。")
-                    speak.bot2(f"{UserName}さんは、{count}回で正解しました。")
-                    break
-                elif ans < num:
-                    speak.bot("もっと大きい数です。")
-                elif ans > num:
-                    speak.bot("もっと小さい数です。")
-                # if and ((num - num_hint < ans), (ans < num + num_hint)):
-                if (num - num_hint < ans) and (ans < num + num_hint):
-                    speak.bot2("惜しい。")
+            ans = questionary.text(
+                "数値：",
+                qmark=(f"{UserName} >"),
+                validate=NumValidator
+            ).ask(kbi_msg="キャンセルされました。")
+            if ans is None:
+                # questionaryで「KeyboardInterrupt」の場合、Noneが返ってくる
+                break
+            ans = int(ans)
+            count += 1
+            if ans == num:
+                speak.bot(Fore.LIGHTMAGENTA_EX + "正解です。")
+                speak.bot2(f"{UserName}さんは、{count}回で正解しました。")
+                break
+            elif ans < num:
+                speak.bot("もっと大きい数です。")
+            elif ans > num:
+                speak.bot("もっと小さい数です。")
+            if all([(num - num_hint < ans), (ans < num + num_hint)]):
+                speak.bot2("惜しい。")
         speak.bot("数当てゲームを終わります。")
 
 
