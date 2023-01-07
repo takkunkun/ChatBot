@@ -21,21 +21,28 @@ from today import today
 from zipcode import zipcode
 from speak import speak
 from self_introduction import self_introduction
+from countingGames import countingGames
+import speak as s
+from speak import speak
 
 # 文字色を自動で元に戻す
 init(autoreset=True)
+
+UserName = s.UserName
 
 
 class command:
     def select(self) -> None:
         """コマンド(したいこと)を選択。"""
         ans = questionary.select(
-            '何をする？',
+            '何をする：',
+            qmark=(f"{UserName} > "),
             choices=[
                 questionary.Choice(title="自己紹介", value=1),
                 questionary.Choice(title="曜日当てゲーム", value=2),
                 questionary.Choice(title="じゃんけんゲーム", value=3),
                 questionary.Choice(title="郵便番号から住所検索", value=4),
+                questionary.Choice(title="数当てゲーム", value=5),
             ],
             # 数字キーまたは矢印キーで選択できるようにする。
             use_shortcuts=True,
@@ -64,6 +71,9 @@ class command:
             case 4:
                 obj = zipcode()
                 obj.do()
+            case 5:
+                obj = countingGames()
+                obj.do()
             case _:
                 print("このコマンドは存在しません。")
 
@@ -90,7 +100,7 @@ while True:
         if any([is_bool is False, is_bool is None]):
             break
     except KeyboardInterrupt:
-        speak.user2(Back.LIGHTBLUE_EX + Fore.BLACK + "'Ctrl + C'で停止しました。")
+        print()
+        speak.bot(Back.LIGHTBLUE_EX + Fore.BLACK + "'Ctrl + C'で停止しました。")
         break
-print()
 print('---チャットボットが終了しました---')
