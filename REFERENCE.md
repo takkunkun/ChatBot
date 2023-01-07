@@ -87,6 +87,8 @@ if any([a, b, c, d, e]):
 else:
     print("全部False")
 ```
+## pyinstallerで作ったwindowsアプリでバージョンを表示させたいversion_resource_fileの作りかた
+<https://nobwak.github.io/posts/2014-05-09-pyinstallerで作ったwindowsアプリでバージョンを表示させたいversion_resource_fileの作りかた/>
 
 # GitHub
 
