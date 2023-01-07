@@ -14,5 +14,6 @@
     "editor.codeActionsOnSave": {
         "source.organizeImports": true
     },
-    "isort.check": true
+    "isort.check": true,
+    "markdown.extension.toc.updateOnSave": false
 }
