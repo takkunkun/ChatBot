@@ -1,0 +1,12 @@
+from colorama import Fore, Back, Style
+print(Fore.RED + 'some red text')
+print(Back.GREEN + 'and with a green background')
+print(Style.DIM + 'and in dim text')
+print(Style.RESET_ALL)
+print('back to normal now')
+print(Style.BRIGHT + 'BRIGHT text')
+print(Style.RESET_ALL)
+print('back to normal now')
+print("さんは、" + Style.BRIGHT + "7回" + Style.RESET_ALL + "で正解しました。")
+print(Style.RESET_ALL)
+print('back to normal now')
