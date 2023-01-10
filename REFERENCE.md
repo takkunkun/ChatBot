@@ -90,6 +90,10 @@ else:
 ## pyinstallerで作ったwindowsアプリでバージョンを表示させたいversion_resource_fileの作りかた
 <https://nobwak.github.io/posts/2014-05-09-pyinstallerで作ったwindowsアプリでバージョンを表示させたいversion_resource_fileの作りかた/>
 
+## Python colorama 色メモ
+2023/01/10追加
+<https://qiita.com/ymdymd/items/83aca4134c59b0228659>
+
 # GitHub
 
 GitHub使う時に参考にしたサイト
