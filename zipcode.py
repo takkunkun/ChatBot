@@ -14,10 +14,11 @@ class zipcode():
     """郵便番号から住所を検索するクラス"""
 
     def __init__(self) -> None:
-        speak.bot("郵便番号から住所を検索します。")
+        pass
 
     def do(self) -> None:
         """郵便番号から住所を検索する"""
+        speak.bot("郵便番号から住所を検索します。")
         speak.bot("郵便番号を入力してください。")
         while True:
             # 郵便番号を入力させる。

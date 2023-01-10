@@ -15,7 +15,7 @@ class today():
     """今日の曜日を当てる"""
 
     def __init__(self) -> None:
-        speak.bot("曜日当てゲームをします。")
+        pass
 
     days = ['月', '火', '水', '木', '金', '土', '日']
     # yyyy-mm-dd
@@ -23,6 +23,7 @@ class today():
     day = days[today.weekday()]
 
     def do(self) -> None:
+        speak.bot("曜日当てゲームをします。")
         ans_day = questionary.select(
             '今日は何曜日？',
             choices=self.days,

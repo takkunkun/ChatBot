@@ -13,14 +13,14 @@ class self_introduction():
     """自己紹介クラス"""
 
     def __init__(self) -> None:
-        speak.bot("自己紹介をします。")
+        pass
 
     def do(self) -> None:
         """自己紹介本体"""
+        speak.bot("自己紹介をします。")
         speak.bot("私の名前は{}です。".format(BotName))
         speak.bot("あなたの名前を教えてください。")
         YourName = speak.user_input("")
-        speak.user_input("")
         speak.bot("あなたは{}さんですね。".format(YourName))
         speak.bot("よろしくお願いします。")
         # 名前をファイルに書き込む。
