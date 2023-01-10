@@ -17,10 +17,11 @@ class RockScissorsPaper():
     decision = ("引き分け", "負け", "勝ち")
 
     def __init__(self) -> None:
-        speak.bot("じゃんけんゲームを始めます。")
+        pass
 
     def do(self) -> None:
         """じゃんけん本体"""
+        speak.bot("じゃんけんゲームを始めます。")
         # ユーザーにどの手を出すか選択させる。
         user_hond = questionary.select(
             'どの手を出す？',
