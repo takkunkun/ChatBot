@@ -15,5 +15,9 @@
         "source.organizeImports": true
     },
     "isort.check": true,
-    "markdown.extension.toc.updateOnSave": false
+    "markdown.extension.toc.updateOnSave": false,
+    "cSpell.words": [
+        "LIGHTMAGENTA",
+        "qmark"
+    ]
 }

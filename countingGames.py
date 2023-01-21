@@ -81,7 +81,7 @@ class countingGames():
                 speak.bot("もっと大きい数です。")
             elif ans > num:
                 speak.bot("もっと小さい数です。")
-            if all([(num - num_hint <= ans), (ans <= num + num_hint)]):
+            if (num - num_hint <= ans <= num + num_hint):
                 speak.bot2("惜しい。")
         speak.bot("数当てゲームを終わります。")
 
