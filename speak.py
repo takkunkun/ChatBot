@@ -101,6 +101,21 @@ class speak:
         return input("{} > {}".format(UserName, speak))
 
 
+class get():
+    """ゲッタークラス"""
+
+    def __init__(self) -> None:
+        pass
+
+    @ staticmethod
+    def botname() -> str:
+        return BotName
+
+    @ staticmethod
+    def username() -> str:
+        return UserName
+
+
 # メイン処理
 if __name__ == "__main__":
     print("-----表示テスト-----")
